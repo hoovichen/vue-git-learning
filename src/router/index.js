@@ -13,12 +13,18 @@ Vue.use(VueRouter)
 const routes = [{
     path: '/login',
     name: 'login',
-    component: () => import('../views/system/LoginPage.vue')
+    component: () => import('../views/system/LoginPage.vue'),
+    meta:{
+      title: '登陆'
+    }
   },
   {
     path: '/',
     name: 'home',
     component: HomeView,
+    meta :{
+      title: '主页'
+    },
     children: [{
         path: '/frontPage',
         name: 'frontPage',
