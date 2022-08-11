@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default{
+export default {
     state: {
         editableTabsValue: "frontPage",
         tabs: [{
@@ -18,10 +18,11 @@ export default{
 
     },
     mutations: {
-         // 切换属性
-         setOpenOrClose(state) {
+        // 切换属性
+        setOpenOrClose(state) {
             state.isCollapse = !state.isCollapse;
         },
+        // 点击菜单的时候调用
         selectMenu(state, val) {
             console.log(val);
             // 点击对象传递到tabs
@@ -36,8 +37,9 @@ export default{
             }
             // 当前选中对象
             state.editableTabsValue = val.name;
+
             // 当前打开的选项卡
-            sessionStorage.setItem('tabsList')
+            sessionStorage.setItem('tabsList', JSON.stringify(state.tabs));
         },
         // 设置单选中的选项卡
         getTabs(state) {
@@ -46,10 +48,11 @@ export default{
                 state.tabs = JSON.parse(tabs);
             }
         },
-         // 设置当前激活的选项卡
-         setActiveTabs(state, val) {
+        // 设置当前激活的选项卡
+        setActiveTabs(state, val) {
             state.editableTabsValue = val;
         },
+
         // 获取菜单数据和生成路由
         getMenuList(state, router) {
             // 取出菜单数据
@@ -76,7 +79,7 @@ export default{
             // 添加到现有路由里面
             router.addRoutes(oldRouter);
         },
-       
+
 
     },
     actions: {

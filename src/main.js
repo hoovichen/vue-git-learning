@@ -11,7 +11,13 @@ Vue.use(Fragment.Plugin)
 Vue.use(ElementUI);
 Vue.config.productionTip = false
 
+// to 即将进入的路由
+// from 即将离开的路由
+// next 继续往下执行
 router.beforeEach((to, from, next) => {
+  // 设置tabs数据
+  store.commit('getTabs');
+  store.commit('setActiveTabs', to.name);
   // 标签随着路由改变而改变
   if(to.meta.title){
     document.title = to.meta.title

@@ -29,10 +29,10 @@
                         id: 36,
                         isHome: 0,
                         label: "会计",
-                        name: "repair",
+                        name: "accountingList",
                         orderNum: 1,
                         parentId: 34,
-                        path: "/repair",
+                        path: "/accountingList",
                         type: "1",
                         url: "/system/Accounting/AccountingList"
                     }, ],

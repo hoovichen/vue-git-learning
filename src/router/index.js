@@ -30,6 +30,11 @@ const routes = [{
         name: 'frontPage',
         component: () => import('@/views/system/FrontPage.vue')
       },
+      {
+        path: '/accountingList',
+        name: 'accountingList',
+        component: () => import('@/views/system/Accounting/AccountingList.vue')
+      }
     ]
   },
   {

@@ -1,5 +1,6 @@
-<template>
-    <el-tabs style="float:left;" v-model="editableTabsValue" type="card" closable @tab-click="tabClick" @tab-remove="removeTab">
+<template >
+    <el-tabs v-model="editableTabsValue" type="card" closable @tab-click="tabClick"
+        @tab-remove="removeTab">
         <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name">
             {{item.content}}
         </el-tab-pane>
@@ -7,31 +8,16 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex';
     export default {
         name: 'TabBar',
         computed: {
-            //...mapState({
-            // tabs 选项卡数据
-            // editableTabs: state => state.MenuStore.tabs,
-            // 当前激活的选项卡
-            // editableTabsValue: state => state.MenuStore.editableTabsValue
-            editableTabsValue: {
-                get() {
-                    return this.$store.state.MenuStore.editableTabsValue;
-                },
-                set(val) {
-                    this.$store.state.MenuStore.editableTabsValue = val;
-                }
-            },
-            editableTabs: {
-                get() {
-                    return this.$store.state.MenuStore.tabs;
-                },
-                set(val) {
-                    this.$store.state.MenuStore.tabs = val;
-                }
-            }
-            //})
+            ...mapState({
+                // tabs 选项卡数据
+                editableTabs: state => state.MenuStore.tabs,
+                // 当前激活的选项卡
+                editableTabsValue: state => state.MenuStore.editableTabsValue
+            })
         },
         data() {
             return {

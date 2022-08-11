@@ -1,7 +1,6 @@
 <template>
-  <div class="">
     <!-- 划分区域 -->
-    <el-container >
+    <el-container class="home" >
       <el-header class="header ub main-justify cross-center">
         <!-- Header content 头部 LOGO 登陆信息 -->
         <div class="header-left-text"> 管理系统</div>
@@ -26,15 +25,15 @@
       </el-header>
 
       <el-container >
-        <el-aside width="auto">
+        <el-aside width="auto" >
           <!-- Aside content 菜单栏 靠左 -->
           <menu-bar></menu-bar>
         </el-aside>
 
         <el-container >
-          <el-main style="padding :0;">
+          <el-main style="padding :0; ">
             <!-- Main content 主要的页面内容 -->
-            <i class="arrow-icon" :class="[isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold']" @click="arrowBtn"></i>
+            <div class="arrow-icon" :class="[isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold']" @click="arrowBtn"></div>
 
             <!-- 页面显示 会覆盖收缩图标导致图标无法点击-->
             <tab-bar></tab-bar>
@@ -42,14 +41,13 @@
 
           </el-main>
 
-          <el-footer >
+          <el-footer class="footer ub main-center cross-center" >
             <!-- Footer content 底部的信息-->
+            @Copyright: FDGE 
           </el-footer>
         </el-container>
       </el-container>
     </el-container>
-
-  </div>
 </template>
 
 <script>

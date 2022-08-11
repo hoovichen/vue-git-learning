@@ -58,4 +58,8 @@
     line-height: 39px !important;
     width: 40px;
     text-align: center;
+    z-index: 1;
+    /* 由于float:left 会导致图层覆盖 然后无法触发点击事件，所以这里需要position : relative */
+    position: relative;
   }
+
