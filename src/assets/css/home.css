@@ -1,8 +1,12 @@
-.home {
+  /*解决图标不能点击的问题*/
+  ::v-deep .el-tabs__header {
+    position: static !important;
+  }
+
+  .home {
     height: 100%;
   }
 
-  /* 头部样式 */
   .header {
     background-color: #167bd8;
     color: #fff;
@@ -10,13 +14,21 @@
   }
 
   .header-left-text {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bolder;
   }
 
   .header-welcome {
     font-size: 15px;
     font-weight: bolder;
+  }
+
+  .user-img {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+
   }
 
   .header-time {
@@ -27,36 +39,18 @@
   .user-role {
     margin-left: 10px;
   }
-  
-  .user-img {
-    height: 50px;
-    width: 50px;
-    border: 1px solid #40db8d;
-    border-radius: 50%;
-  }
-
-  .header-right {
-    margin-right: 30px;
-  }
-
-  /* Footer样式 */
-  .el-container .el-menu {
-    border-right: none !important;
-  }
 
   .el-aside {
     border-right: 1px solid #e6e6e6;
   }
 
-  .menu-bar:not(.el-menu--collapse) {
-    width: 200px;
-    min-height: 400px;
+  .footer {
+    background-color: #167bd8;
+    color: #fff;
   }
 
   .arrow-icon {
     float: left;
-    z-index: 11;
-    position: relative;
     background: #eaedf1;
     border: 1px solid transparent;
     font-size: 25px;

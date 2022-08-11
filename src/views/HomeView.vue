@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <div class="">
     <!-- 划分区域 -->
-    <el-container :direction="vertical">
+    <el-container >
       <el-header class="header ub main-justify cross-center">
         <!-- Header content 头部 LOGO 登陆信息 -->
         <div class="header-left-text"> 管理系统</div>
@@ -9,7 +9,6 @@
           <!-- 用户信息 -->
           <div>
             <el-dropdown placement="bottom-start">
-
                <img class="user-img" src="../assets/images/user215.png" alt="用户头像">
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item>个人中心</el-dropdown-item>
@@ -25,15 +24,25 @@
           </div>
         </div>
       </el-header>
-      <el-container :direction="horizontal">
-        <el-aside width="200px">
+
+      <el-container >
+        <el-aside width="auto">
           <!-- Aside content 菜单栏 靠左 -->
+          <menu-bar></menu-bar>
         </el-aside>
-        <el-container :direction="vertical">
-          <el-main height="">
+
+        <el-container >
+          <el-main style="padding :0;">
             <!-- Main content 主要的页面内容 -->
+            <i class="arrow-icon" :class="[isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold']" @click="arrowBtn"></i>
+
+            <!-- 页面显示 会覆盖收缩图标导致图标无法点击-->
+            <tab-bar></tab-bar>
+            <router-view></router-view>
+
           </el-main>
-          <el-footer height="">
+
+          <el-footer >
             <!-- Footer content 底部的信息-->
           </el-footer>
         </el-container>
@@ -46,7 +55,11 @@
 <script>
   // @ is an alias to /src
   // import HelloWorld from '@/components/HelloWorld.vue'
+  import MenuBar from "../components/MenuBar.vue";
+  import TabBar from "../components/TabBar.vue";
   import { mapState } from 'vuex';
+  
+
   var $vueIndex;
 
   export default {
@@ -54,15 +67,22 @@
     data() {
       return {
         homeDate: null,
+        
       }
     },
     components: {
+      MenuBar,
+      TabBar
 
     },
     methods: {
+      // 伸缩事件
       arrowBtn() {
-        this.$store.commit("setOpenOrClose");
+        // 调用属性切换
+        this.$store.commit('setOpenOrClose');
+        // console.log("arrowBtn");
       },
+      // 时间
       showTime() {
         var week = new Array(
           " 星期日",
@@ -85,6 +105,7 @@
           second) + "" + (week[date.getDay()] || "");
       }
     },
+    // 生命周期勾子函数，这里主要来调用显示时间的方法
     mounted() {
       $vueIndex = this;
       this.showTime();
@@ -92,16 +113,18 @@
         $vueIndex.showTime();
       }, 1000);
     },
+    // 结束周期的摧毁阶段
     destroyed() {
       // vue销毁的时候清除定时器
       if (this.timer) {
         clearInterval(this.timer);
       }
     },
+    
     computed: {
       ...mapState({
-        isCollapsed: state => state.MenuStore.isCollapsed
-      })
+        isCollapse: (state) => state.MenuStore.isCollapse,
+      }),
     },
   }
 </script>
